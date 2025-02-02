@@ -1,6 +1,6 @@
 <p>list-starships works!</p>
 
-@for (starship of listStarships; track starship) {
+@for (starship of listStarships(); track starship) {
     <div>
         <p>{{starship.name}}</p>
         <p>{{starship.model}}</p>
