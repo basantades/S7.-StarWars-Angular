@@ -5,7 +5,9 @@
         <p>{{starship.name}}</p>
         <p>{{starship.model}}</p>
         <p>link: <a href={{starship.url}}>{{starship.url}}</a></p>
-        <img src="https://starwars-visualguide.com/assets/img/starships/{{this.starshipsService.getIdFromUrl(starship.url)}}.jpg" alt="">
+        <img src="assets/starships/{{this.starshipsService.getIdFromUrl(starship.url)}}.jpg" alt="">
         <br>
     </div>
 }
+
+<button (click)="this.starshipsService.getNextPageStarshipsList()">Ver más</button>
