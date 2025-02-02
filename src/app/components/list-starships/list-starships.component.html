@@ -1,1 +1,11 @@
 <p>list-starships works!</p>
+
+@for (starship of listStarships; track starship) {
+    <div>
+        <p>{{starship.name}}</p>
+        <p>{{starship.model}}</p>
+        <p>link: <a href={{starship.url}}>{{starship.url}}</a></p>
+        <img src="https://starwars-visualguide.com/assets/img/starships/{{this.starshipsService.getIdFromUrl(starship.url)}}.jpg" alt="">
+        <br>
+    </div>
+}
