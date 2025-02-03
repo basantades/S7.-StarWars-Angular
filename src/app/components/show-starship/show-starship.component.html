@@ -1,0 +1,26 @@
+<p>show-starship works!</p>
+@if (selectedStarship()) {
+<div>
+    <img src="assets/starships/{{this.starshipsService.getIdFromUrl(selectedStarship().url)}}.jpg" alt="">
+    <p>Name: {{selectedStarship().name}}</p>
+    <p>Model: {{selectedStarship().model}}</p>
+    <p>Manufacturer: {{selectedStarship().manufacturer}}</p>
+    <p>Cost in credits: {{selectedStarship().cost_in_credits}}</p>
+    <p>Length: {{selectedStarship().length}}</p>
+    <p>Max atmosphering speed: {{selectedStarship().max_atmosphering_speed}}</p>
+    <p>Crew: {{selectedStarship().crew}}</p>
+    <p>Passengers: {{selectedStarship().passengers}}</p>
+    <p>Cargo capacity: {{selectedStarship().cargo_capacity}}</p>
+    <p>Consumables: {{selectedStarship().consumables}}</p>
+    <p>Hyperdrive rating: {{selectedStarship().hyperdrive_rating}}</p>
+    <p>MGLT: {{selectedStarship().MGLT}}</p>
+    <p>Starship class: {{selectedStarship().starship_class}}</p>
+    <p>Pilots: {{selectedStarship().pilots}}</p>
+    <p>Films: {{selectedStarship().films}}</p>
+    <p>link: <a href={{selectedStarship().url}}>{{selectedStarship().url}}</a></p>
+</div>
+} @else {
+<ng-template>
+    <p>Cargando datos de la nave...</p>
+</ng-template>
+}

@@ -15,6 +15,7 @@ export class StarshipsService {
   private fallbackApiUrl = 'https://swapi.py4e.com/api/starships/';
 
   nextPageUrl: string | null = '';
+  selectedStarship = signal<any | null>(null);
 
   getStarshipsList(): void {
     // Evitamos hacer la petición si ya tenemos datos almacenados
@@ -41,6 +42,18 @@ export class StarshipsService {
       this.nextPageUrl = data.next; // Actualiza la URL de la siguiente página
     });
   }
+
+  showStarship(id: number): void {
+    this.httpClient.get<any>(`https://swapi.dev/api/starships/${id}`).pipe(
+      catchError(() => {
+        console.warn('⚠️ Error con la API principal, intentando con la API de respaldo...');
+        return this.httpClient.get<any>(`https://swapi.py4e.com/api/starships/${id}`);
+      })
+    ).subscribe((data) => {
+      this.selectedStarship.set(data);
+    });
+  }
+
 
   getIdFromUrl(url: string): string | null {
     const match = url.match(/\/(\d+)\/$/);

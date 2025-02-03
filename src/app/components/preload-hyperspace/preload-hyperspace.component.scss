@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 .wall{
     background: url(https://t3.ftcdn.net/jpg/01/41/43/84/360_F_141438480_vZ4DSzbfLULyc41QDCMxuwM3TqouDkXz.jpg);
     background-size: cover;
@@ -6,12 +12,16 @@
   .contenedor-hyperspace{
     margin: 0;
     padding: 0;
-    position: absolute;
+    position: fixed;
     height: 100%;
     width: 100%;
     overflow: hidden;
     background: #000;
     text-align: center;
+    opacity: 0;
+    animation: fade 1s  linear;
+    animation-delay: 0;
+    pointer-events: none;
   }
   
   
