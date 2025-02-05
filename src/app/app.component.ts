@@ -10,5 +10,5 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'S7.-StarWars-Angular';
+  title = 'Starships of Star Wars';
 }
