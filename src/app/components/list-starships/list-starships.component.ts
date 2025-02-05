@@ -1,4 +1,4 @@
-import { Component, inject, effect } from '@angular/core';
+import { Component, inject, HostListener } from '@angular/core';
 import { StarshipsService } from '../../services/starships.service';
 
 @Component({
@@ -14,4 +14,14 @@ export class ListStarshipsComponent {
   constructor() {
     this.starshipsService.getStarshipsList(); 
   }
+
+    // Detecta el scroll de la ventana
+    @HostListener("window:scroll", [])
+    onScroll(): void {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
+        // Si el usuario está a 200px del final, carga más datos
+        this.starshipsService.getNextPageStarshipsList();
+      }
+    }
+    
 }

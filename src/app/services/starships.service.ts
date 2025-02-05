@@ -33,13 +33,20 @@ export class StarshipsService {
     });
   }
 
+  isLoading = false;
+
   getNextPageStarshipsList(): void {
-    if (!this.nextPageUrl) return; // Si no hay más páginas, no hacer nada
+    if (!this.nextPageUrl || this.isLoading) return; // Si no hay más páginas o ya está cargando, no hacer nada
+
+    this.isLoading = true; // 🔒 Bloquea nuevas llamadas mientras carga
 
     this.httpClient.get<any>(this.nextPageUrl).subscribe((data) => {
       console.log("Resultados recibidos siguiente pagina:", data.results);
-      this.listStarships.update(currentList => [...currentList, ...data.results]); // Agrega los nuevos resultados
-      this.nextPageUrl = data.next; // Actualiza la URL de la siguiente página
+      this.listStarships.update(currentList => [...currentList, ...data.results]); 
+      this.nextPageUrl = data.next; 
+      this.isLoading = false; // 🔓 Permite nuevas llamadas después de recibir la respuesta
+    }, () => {
+      this.isLoading = false; // 🔓 En caso de error, desbloquear
     });
   }
 

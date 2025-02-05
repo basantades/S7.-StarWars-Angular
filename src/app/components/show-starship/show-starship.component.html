@@ -1,7 +1,7 @@
 <p>show-starship works!</p>
 @if (selectedStarship()) {
 <div>
-    <img src="assets/starships/{{this.starshipsService.getIdFromUrl(selectedStarship().url)}}.jpg" alt="">
+    <img src="assets/img/starships/{{this.starshipsService.getIdFromUrl(selectedStarship().url)}}.jpg" alt="">
     <p>Name: {{selectedStarship().name}}</p>
     <p>Model: {{selectedStarship().model}}</p>
     <p>Manufacturer: {{selectedStarship().manufacturer}}</p>
