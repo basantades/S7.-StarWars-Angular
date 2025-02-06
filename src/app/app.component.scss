@@ -1,1 +1,15 @@
+main {
+    animation: zoom 0.2s ease-out;
+    animation-delay: 0.6s;
+    transform: scale(0);
+    animation-fill-mode: forwards;
+}
 
+@keyframes zoom {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

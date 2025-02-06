@@ -1,0 +1,22 @@
+.fadedown {
+    animation-name: fadeDown;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes fadeDown {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+      visibility: visible;
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+      visibility: visible;
+    }
+  }

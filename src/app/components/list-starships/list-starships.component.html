@@ -1,22 +1,15 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    @if (listStarships()) {
         @for (starship of listStarships(); track starship) {
             
             <div>
-                <a href="/starship/{{this.starshipsService.getIdFromUrl(starship.url)}}/">
+                <a href="/starship/{{starship.id}}/">
                 <p class="uppercase font-bold">{{starship.name}}</p>
                 <p>{{starship.model}}</p>
-                <!-- <p><a href="/starship/{{this.starshipsService.getIdFromUrl(starship.url)}}/">Ver detalles</a></p> -->
-                <img src="/assets/img/starships/{{this.starshipsService.getIdFromUrl(starship.url)}}.jpg" alt="">
+                <img src="/assets/img/starships/{{starship.id}}.jpg" alt="">
                 <br>
             </a>
             </div>
         }
-    } @else {
-        <ng-template>
-            <p>Cargando datos de las naves...</p>
-        </ng-template>
-    }
 
 </div>
 <button (click)="this.starshipsService.getNextPageStarshipsList()">view more</button>

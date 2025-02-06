@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, finalize, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class StarshipsService {
   selectedStarship = signal<any | null>(null);
 
   getStarshipsList(): void {
-    // Evitamos hacer la petición si ya tenemos datos almacenados
+  console.log("iniciando getStarshipsList():", this.listStarships());
     if (this.listStarships().length > 0) return;
 
     this.httpClient.get<any>(this.primaryApiUrl).pipe(
@@ -28,29 +28,53 @@ export class StarshipsService {
       })
     ).subscribe((data) => {
       console.log("Datos recibidos:", data);
-      this.listStarships.set(data.results);
+      this.listStarships.set(this.procesarStarships(data.results)); // Agrega datos mas el ID a cada objeto
       this.nextPageUrl = data.next;
     });
+
   }
 
   isLoading = false;
 
   getNextPageStarshipsList(): void {
+    console.log("iniciando getNextPageStarshipsList():", this.nextPageUrl);
+  
     if (!this.nextPageUrl || this.isLoading) return; // Si no hay más páginas o ya está cargando, no hacer nada
-
+  
     this.isLoading = true; // 🔒 Bloquea nuevas llamadas mientras carga
-
-    this.httpClient.get<any>(this.nextPageUrl).subscribe((data) => {
-      console.log("Resultados recibidos siguiente pagina:", data.results);
-      this.listStarships.update(currentList => [...currentList, ...data.results]); 
-      this.nextPageUrl = data.next; 
-      this.isLoading = false; // 🔓 Permite nuevas llamadas después de recibir la respuesta
-    }, () => {
-      this.isLoading = false; // 🔓 En caso de error, desbloquear
-    });
+  
+    this.httpClient.get<any>(this.nextPageUrl).pipe(
+      finalize(() => this.isLoading = false) // 🔓 Se ejecuta SIEMPRE, incluso si hay un error
+    ).subscribe(
+      (data) => {
+        console.log("Resultados recibidos siguiente página:", data.results);
+        this.listStarships.update(currentList => [...currentList, ...this.procesarStarships(data.results)]); 
+        this.nextPageUrl = data.next; 
+      },
+      () => {
+        console.error('⚠️ Error al obtener la siguiente página.');
+      }
+    );
   }
 
+
+  getIdFromUrl(url: string): string | null {
+    console.log("iniciando getIdFromUrl():", url);
+    const match = url.match(/\/(\d+)\/$/);
+    return match ? match[1] : null;
+  }
+
+  private procesarStarships(data: any[]): any[] {
+    return data.map(starship => ({
+      ...starship, 
+      id: this.getIdFromUrl(starship.url)
+    }));
+  }
+
+
+  
   showStarship(id: number): void {
+    console.log("iniciando showStarship():", id);
     this.httpClient.get<any>(`https://swapi.dev/api/starships/${id}`).pipe(
       catchError(() => {
         console.warn('⚠️ Error con la API principal, intentando con la API de respaldo...');
@@ -59,11 +83,9 @@ export class StarshipsService {
     ).subscribe((data) => {
       this.selectedStarship.set(data);
     });
+    console.log("final showStarship():", this.selectedStarship());
   }
 
 
-  getIdFromUrl(url: string): string | null {
-    const match = url.match(/\/(\d+)\/$/);
-    return match ? match[1] : null;
-  }
 }
+

@@ -1,12 +1,11 @@
-@if (selectedStarship()) {
 <div>
     <h2 class="text-xl font-bold px-6 py-4 border-b border-gray-700 text-center mb-6 uppercase">{{selectedStarship().name}}</h2>
 
     <div class="flex flex-col md:flex-row">
-        <div class="md:w-1/2">
+        <div class="w-full md:w-1/2">
             <img src="/assets/img/starships/{{this.starshipsService.getIdFromUrl(selectedStarship().url)}}.jpg" alt={{selectedStarship().name}} class="w-full h-auto object-cover">
         </div>
-        <div class="md:w-1/2 p-6 fondo-gris">
+        <div class="w-full md:w-1/2 p-6 fondo-gris">
             <ul class="text-gray-400 text-sm space-y-2">
                 <li><strong>Name:</strong> {{selectedStarship().name}}</li>
                 <li><strong>Model:</strong> {{selectedStarship().model}}</li>
@@ -24,11 +23,6 @@
             </ul>
         </div>
     </div>
-    <p>Pilots: {{selectedStarship().pilots}}</p>
-    <p>Films: {{selectedStarship().films}}</p>
+    <!-- <p>Pilots: {{selectedStarship().pilots}}</p>
+    <p>Films: {{selectedStarship().films}}</p> -->
 </div>
-} @else {
-<ng-template>
-    <p>Cargando datos de la nave...</p>
-</ng-template>
-}
