@@ -3,20 +3,32 @@
     animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-delay: 1s;
-    opacity: 0;
     visibility: hidden;
 }
 
 @keyframes fadeDown {
     from {
-      opacity: 0;
       transform: translateY(-100%);
       visibility: visible;
     }
   
     to {
-      opacity: 1;
       transform: translateY(0%);
       visibility: visible;
     }
   }
+
+  header img {
+    animation: fade 1s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 1.4s;
+    opacity: 0;
+  }
+  @keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

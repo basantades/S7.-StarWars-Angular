@@ -1,5 +1,5 @@
 main {
-    animation: zoom 0.2s ease-out;
+    animation: zoom 0.4s ease-out;
     animation-delay: 0.6s;
     transform: scale(0);
     animation-fill-mode: forwards;
@@ -12,4 +12,44 @@ main {
     100%{
         transform: scale(1);
     }
+}
+
+@keyframes move-stars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100vw 0;
+    }
+}
+
+.universe-background {
+    position: fixed;
+    z-index: -1;
+    width: 50vw;
+    height: 100vh;
+    background: url('/assets/img/fondo-estrellas.webp') repeat-x;
+    background-size: auto 100%;
+    animation: move-stars 100s linear infinite;
+    transform: rotate( 180deg )
+}
+.universe-background2 {
+    position: fixed;
+    right: 0;
+    z-index: -1;
+    width: 50vw;
+    height: 100vh;
+    background: url('/assets/img/fondo-estrellas.webp') repeat-x;
+    background-size: auto 100%;
+    animation: move-stars 100s linear infinite;
+}
+.degradado-fondo {
+    position: fixed;
+    z-index: 0;
+    width: 1400px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    height: 100vh;
+    background: linear-gradient(90deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
 }

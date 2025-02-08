@@ -15,11 +15,22 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-image: url('/assets/img/background-stars.webp');
-    background-position: center top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    // background-image: url('/assets/img/background-stars.webp');
+    // background-position: center top;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-attachment: fixed;
+  }
 
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
+  .orbitron-400 {
+    font-family: "Orbitron", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  app-root {
+    background: none;
   }

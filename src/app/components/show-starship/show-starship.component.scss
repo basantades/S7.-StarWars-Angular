@@ -1,3 +1,105 @@
-.fondo-gris {
-    background-color: #1d1e1f;
+// .fondo-gris {
+//     background-color: #1d1e1f;
+// }
+.ficha {
+    margin-top: 40px;
+    border-radius: 0 40px 0 0;
+    background: linear-gradient(90deg, transparent 20%, #142332d0 60%, #14233275 100%);
+
+}
+
+.ficha img {
+    // border: 1px solid #00ffff;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border-radius: 30px 0 30px 0;
+    border: 2px solid transparent; /* Borde transparente por defecto */
+    border-image-source: linear-gradient(
+        to bottom left, 
+        rgba(0, 255, 255, 0.4) 4%, /* Visible en la esquina superior derecha */
+        transparent 35%, 
+        transparent 65%, 
+        rgba(0, 255, 255, 0.4) 96% /* Visible en la esquina inferior izquierda */
+    );
+    border-image-slice: 1;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+
+}
+
+.ficha ul {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .ficha {
+        gap: 0px;
+        margin: 0px;
+        margin-top: 30px;
+        background: linear-gradient(180deg, transparent 25%, #142332d0 60%, #14233275 100%);
+
+    }
+    .ficha img {
+        margin: 0px;
+        border-radius: 0px 0 30px 0;
+    }
+    .ficha ul {
+        margin-left: 0px;
+    }
+    
+}
+
+
+@keyframes borderGlow {
+    0% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); }
+    30% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); }
+    50% { box-shadow: 0 0 20px #00ffff; }
+    70% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); }
+}
+
+.glow-line {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 1), rgba(0, 255, 255, 0.2));
+    animation: borderGlow 4s infinite;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+}
+
+.glow-line-pointer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    width: 10%;
+    height: 2px;
+    border-radius: 100%;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, rgba(0, 255, 255, 0), rgba(0, 255, 255, 1), rgba(0, 255, 255, 0));
+    animation: move-x 4s infinite;
+}
+
+@keyframes move-x {
+    0% {
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+    40% {
+        transform: translateX(-100%);
+    }
+    60% {
+        transform: translateX(1100%);
+        opacity: 1;
+    }
+    80% {
+        opacity: 0;
+        transform: translateX(1100%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
 }
