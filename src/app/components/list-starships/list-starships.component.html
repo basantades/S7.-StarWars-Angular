@@ -1,15 +1,17 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8">
         @for (starship of listStarships(); track starship) {
-            
-            <div>
+        
+            <div class="border-img overflow-hidden text-center">
                 <a href="/starship/{{starship.id}}/">
-                <p class="uppercase font-bold">{{starship.name}}</p>
-                <p>{{starship.model}}</p>
-                <img src="/assets/img/starships/{{starship.id}}.jpg" alt="">
-                <br>
+                    <div class="fadedown">
+                        <img src="/assets/img/starships/{{starship.id}}.jpg" alt="{{starship.name}}" class="w-full object-cover">
+                    </div>
+                    <div class="pb-4">
+                        <h3 class="uppercase font-bold uppercase">{{starship.name}}</h3>
+                        <p>{{starship.model}}</p>
+                    </div>
             </a>
             </div>
         }
-
 </div>
-<button (click)="this.starshipsService.getNextPageStarshipsList()">view more</button>
+<!-- <button (click)="this.starshipsService.getNextPageStarshipsList()">view more</button> -->

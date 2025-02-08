@@ -1,0 +1,44 @@
+.fadedown {
+    position: relative;
+    overflow: hidden;
+}
+
+.fadedown::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 1) 100%);
+    pointer-events: none; 
+}
+
+.border-img img {
+    transition: transform 1s ease-in-out; 
+}
+
+.border-img:hover img {
+    transform: scale(1.2); /* Aplica zoom */
+}
+
+.border-img:hover .fadedown::after {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%);
+}
+
+.border-img:hover {
+    border-image-source: linear-gradient(
+        to bottom left, 
+        rgba(0, 255, 255, 1) 4%,
+        transparent 35%, 
+        transparent 65%, 
+        rgba(0, 255, 255, 1) 96% 
+    );
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+    transition: 1s;
+
+}
+.border-img:hover h3 {
+    color: rgba(0, 255, 255, 1);
+    transition: 1s;
+}
