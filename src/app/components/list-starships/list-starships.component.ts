@@ -1,13 +1,13 @@
 import { Component, inject, HostListener } from '@angular/core';
 import { StarshipsService } from '../../services/starships.service';
-import { Title } from '@angular/platform-browser';
 import { TitleComponent } from "../title/title.component";
+import { VideoComponent } from '../video/video.component';
 
 @Component({
   selector: 'app-list-starships',
   templateUrl: './list-starships.component.html',
   styleUrl: './list-starships.component.scss',
-  imports: [TitleComponent]
+  imports: [TitleComponent, VideoComponent]
 })
 export class ListStarshipsComponent {
 
