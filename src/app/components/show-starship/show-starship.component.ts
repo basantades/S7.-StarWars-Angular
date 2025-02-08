@@ -1,10 +1,11 @@
 import { Component, effect, inject } from '@angular/core';
 import { StarshipsService } from '../../services/starships.service';
 import { ActivatedRoute } from '@angular/router';
+import { TitleComponent } from "../title/title.component";
 
 @Component({
   selector: 'app-show-starship',
-  imports: [],
+  imports: [ TitleComponent ],
   templateUrl: './show-starship.component.html',
   styleUrl: './show-starship.component.scss'
 })
