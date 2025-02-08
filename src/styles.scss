@@ -30,6 +30,14 @@
     font-weight: 400;
     font-style: normal;
   }
+  .text-yellow {
+    color: #f2d24e;
+  }
+
+  a:hover {
+    color: #f2d24e;
+    transition: all 0.5s ease-in-out;
+  }
   
   app-root {
     background: none;
@@ -48,4 +56,13 @@
     );
     border-image-slice: 1;
     box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+}
+
+@keyframes fade {
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+  }
 }
