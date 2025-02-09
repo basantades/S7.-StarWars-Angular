@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,5 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  openModal: boolean = false;
 
 }

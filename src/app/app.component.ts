@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PreloadHyperspaceComponent } from './components/preload-hyperspace/preload-hyperspace.component';
 import { HeaderComponent } from './components/header/header.component';
