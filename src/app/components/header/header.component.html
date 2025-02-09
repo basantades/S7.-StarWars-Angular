@@ -8,5 +8,59 @@
         </a>
     </div>
     <div class="w-1/3">
+        <!-- <button type="button" class="btn btn-primary" aria-haspopup="dialog" aria-expanded="false" aria-controls="transparent-modal" data-overlay="#transparent-modal">Transparent modal</button>
+        <div id="transparent-modal" class="overlay modal overlay-open:opacity-100 hidden place-items-center" role="dialog" tabindex="-1">
+            <div class="modal-dialog overlay-open:opacity-100">
+              <div class="modal-content text-neutral-content bg-transparent shadow-none">
+                <div class="modal-header">
+                  <h3 class="modal-title text-neutral-content">Dialog Title</h3>
+                  <button type="button" class="btn btn-soft btn-circle absolute top-3 end-3" aria-label="Close" data-overlay="#transparent-modal" >
+                    <span class="icon-[tabler--x] size-4"></span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text in the
+                  modal, we use an inline style
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-overlay="#transparent-modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Botón para abrir el modal -->
+<button (click)="openModal = true" class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+    Transparent modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+       [class.hidden]="!openModal">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
+      
+      <!-- Header del modal -->
+      <div class="flex justify-between items-center">
+        <h3 class="text-lg font-semibold">Dialog Title</h3>
+        <button (click)="openModal = false" class="text-gray-500 hover:text-gray-700">
+          ✕
+        </button>
+      </div>
+  
+      <!-- Contenido -->
+      <div class="mt-4">
+        <p>Este es el contenido del modal.</p>
+      </div>
+  
+      <!-- Footer -->
+      <div class="mt-4 flex justify-end space-x-2">
+        <button (click)="openModal = false" class="bg-gray-300 px-4 py-2 rounded-lg">Close</button>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Save changes</button>
+      </div>
+  
+    </div>
+  </div>
+  
     </div>
 </header>
