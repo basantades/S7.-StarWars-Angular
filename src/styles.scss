@@ -15,11 +15,7 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    // background-image: url('/assets/img/background-stars.webp');
-    // background-position: center top;
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-attachment: fixed;
+    min-height: 100vh;
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
@@ -30,8 +26,17 @@
     font-weight: 400;
     font-style: normal;
   }
-  .text-yellow {
-    color: #f2d24e;
+  .button-yellow {
+    background-color: #f2d24e;
+    border: 1px solid #f2d24e;
+    transition: all 0.5s ease-in-out;
+
+  }
+  .button-yellow:hover {
+    background-color: #000;
+  }
+  .bg-yellow {
+    background-color: #f2d24e;
   }
 
   a:hover {
