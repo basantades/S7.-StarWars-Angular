@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { AppComponent } from '../../app.component';
+import { MenuUserComponent } from './menu-user/menu-user.component';
 
 @Component({
   selector: 'app-header',
-  imports: [NavBarComponent],
+  imports: [NavBarComponent, MenuUserComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

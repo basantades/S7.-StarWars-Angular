@@ -1,0 +1,58 @@
+<div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+    <h2 class="text-2xl font-semibold text-center mb-6">Log in to Star Wars</h2>
+    <p class="text-center text-gray-500 mb-4">If you don't have an account, you will be prompted to create one.</p>
+  
+    <!-- Paso 1: Solicitar Email -->
+    @if (step === 'email') {
+      <form [formGroup]="loginForm" (ngSubmit)="checkEmail()" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Enter your email</label>
+          <input type="email" id="email" formControlName="email"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            placeholder="tuemail@example.com" required>
+        </div>
+        <button type="submit" [disabled]="!loginForm.get('email')?.valid"
+          class="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 disabled:bg-gray-400">
+          Continue
+        </button>
+      </form>
+    }
+  
+    <!-- Paso 2: Login si el email existe -->
+    @if (step === 'login') {
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="space-y-4">
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" formControlName="password"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            placeholder="••••••••" required>
+        </div>
+        <button type="submit" [disabled]="!loginForm.get('password')?.valid"
+          class="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 disabled:bg-gray-400">
+          Log in
+        </button>
+      </form>
+    }
+  
+    <!-- Paso 3: Registro si el email no existe -->
+    @if (step === 'register') {
+      <form [formGroup]="loginForm" (ngSubmit)="register()" class="space-y-4">
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Create a password</label>
+          <input type="password" id="password" formControlName="password"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            placeholder="••••••••" required>
+        </div>
+        <button type="submit" [disabled]="!loginForm.get('password')?.valid"
+          class="w-full bg-green-600 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-green-700 disabled:bg-gray-400">
+          Register
+        </button>
+      </form>
+    }
+  
+    <!-- Mostrar errores -->
+    @if (errorMessage) {
+      <p class="text-red-500 text-center mt-4">{{ errorMessage }}</p>
+    }
+  </div>
+  

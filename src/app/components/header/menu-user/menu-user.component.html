@@ -1,0 +1,8 @@
+<div class="mr-12 flex justify-end gap-12">
+    @if (user()) {
+        <span>Welcome, {{ user()?.displayName || user()?.email }}</span>
+        <button (click)="logout()">LOG OUT</button>
+      } @else {
+        <a href="/login" class="text-white hover:text-yellow">LOG IN</a>
+    }
+</div>

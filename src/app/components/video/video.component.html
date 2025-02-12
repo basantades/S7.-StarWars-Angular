@@ -1,12 +1,12 @@
 
-  
 <div class=" video-container w-full overflow-hidden margin-button-negative">
     <video 
       autoplay 
       loop 
-      muted 
-      playsinline 
+      muted  
+      oncanplay="this.play()" onloadedmetadata="this.muted = true"
       poster="/assets/video/starship-video.webp">
+      <source src="/assets/video/starship-video.webm" type="video/webm">
       <source src="/assets/video/starship-video.mp4" type="video/mp4">
     </video>
   </div>
