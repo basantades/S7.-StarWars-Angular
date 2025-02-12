@@ -3,7 +3,6 @@
 
 
 * {
-    margin-top: 0;
     box-sizing: border-box;
   }
 
@@ -27,13 +26,22 @@
     font-style: normal;
   }
   .button-yellow {
-    background-color: #f2d24e;
+    background-color: #00000025;
     border: 1px solid #f2d24e;
     transition: all 0.5s ease-in-out;
-
+    color: #f2d24e;
+    cursor: pointer;
+    
   }
   .button-yellow:hover {
+    background-color: #f2d24e;
+    color: #000;
+  }
+  .button-yellow:disabled {
     background-color: #00000025;
+    border: 1px solid #1e2939;
+    color: #1e2939;    
+    cursor: default;
   }
   .bg-yellow {
     background-color: #f2d24e;
