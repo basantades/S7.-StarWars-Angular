@@ -1,9 +1,8 @@
 
   #starwars {
-    height: 100%;
-    max-width: calc(100vw - 40px);
-    max-width: 1280;
-    overflow: hidden;
+    max-height: 100%;
+    width: 100%;
+    position: relative;
   }
   
   .animate {

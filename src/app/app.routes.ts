@@ -4,6 +4,7 @@ import { ShowStarshipComponent } from './components/show-starship/show-starship.
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
 
@@ -11,6 +12,6 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'starships', component: ListStarshipsComponent },
-    { path: 'starship/:id', component: ShowStarshipComponent },
+    { path: 'starship/:id', component: ShowStarshipComponent, canActivate: [authGuard] }, // Protegida
     { path: '**', redirectTo: '' } // Ruta de "no encontrado"
 ];
