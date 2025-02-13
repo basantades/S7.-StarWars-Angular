@@ -24,3 +24,14 @@
     animation-delay: 1.4s;
     opacity: 0;
   }
+
+  .hiddenmenu {
+    max-height: 0 !important;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  }
+  
+  .burguer-menu {
+    max-height: 400px;
+    transition: max-height 0.5s ease-out;
+  }

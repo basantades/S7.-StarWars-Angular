@@ -1,4 +1,4 @@
-<div class=" flex justify-end gap-12">
+<div class=" flex flex-col lg:flex-row items-center justify-end gap-5 lg:gap-12">
     @if (user()) {
         <span class="text-gray-400">Welcome, {{ user()?.displayName || user()?.email }}</span>
         <a class="text-nowrap text-white hover:text-yellow cursor-pointer" (click)="logout()">LOG OUT</a>
