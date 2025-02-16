@@ -4,7 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { provideAuth, getAuth } from '@angular/fire/auth'; // Esto es lo correcto
+import { provideAuth, getAuth } from '@angular/fire/auth'; 
 import { environment } from '../../environments/environment';
 
 export const appConfig: ApplicationConfig = {
@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideRouter(routes),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideAuth(() => getAuth()), // Aquí se usa provideAuth con getAuth
+    provideAuth(() => getAuth())
   ]
 };
