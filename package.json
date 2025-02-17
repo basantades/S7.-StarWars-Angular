@@ -2,6 +2,7 @@
   "name": "s7.-star-wars-angular",
   "version": "0.0.0",
   "scripts": {
+    "vercel-build": "./vercel-build.sh && ng build --configuration=production",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
