@@ -33,7 +33,9 @@
     #reel {
       $width: 580px;
       width: $width;
-      margin-left: -($width/ 2);
+      // margin-left: -($width/ 2);
+      margin-left: -290px;
+
   
       position: absolute;
       bottom: 0;
