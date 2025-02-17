@@ -2,7 +2,7 @@
     <app-title title={{selectedStarship().name}}></app-title>
     <div class="flex flex-col gap-4 md:flex-row ficha">
         <div class="w-full md:w-3/5">
-            <img src="/assets/img/starships/{{this.starshipsService.getIdFromUrl(selectedStarship().url)}}.jpg" alt={{selectedStarship().name}} class="w-full h-auto object-cover border-img">
+            <img [src]="'/assets/img/starships/' + (selectedStarship().url.split('/')[5]) + '.jpg'" alt={{selectedStarship().name}} class="w-full h-auto object-cover border-img">
         </div>
         <div class="w-full md:w-2/5 p-6">
             <ul class="text-gray-400  space-y-2 orbitron-400">
