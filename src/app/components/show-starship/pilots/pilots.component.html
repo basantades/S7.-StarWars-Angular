@@ -1,0 +1,17 @@
+@if (pilot) {
+    <div class="p-4 text-center">
+        <h3>{{ pilot.name }}</h3>
+        <p>Starships:<br> 
+            @if (pilot.starships && pilot.starships.length > 0) {
+                @for (starshipUrl of pilot.starships; track starshipUrl) {
+                    <a href="/starship/{{ starShipsService.getIdFromUrl(starshipUrl) }}">
+                        Starship {{ starShipsService.getIdFromUrl(starshipUrl) }}
+                    </a>
+                    <br>
+                }
+            } @else {
+                <span>No starships available</span>
+            }
+        </p>
+    </div>
+}

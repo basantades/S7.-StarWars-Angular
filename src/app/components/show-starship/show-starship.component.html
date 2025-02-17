@@ -22,6 +22,15 @@
             </ul>
         </div>
     </div>
+    @if (selectedStarship().pilots && selectedStarship().pilots.length > 0) {
+        <app-title title="Pilots"></app-title>
+        @for (pilotUrl of selectedStarship().pilots; track pilotUrl) {
+            <app-pilots [pilotUrl]="pilotUrl"></app-pilots>
+        }
+    }
     <!-- <p>Pilots: {{selectedStarship().pilots}}</p>
-    <p>Films: {{selectedStarship().films}}</p> -->
+    <p>Films: {{selectedStarship().films}}</p>
+    <p>Created: {{selectedStarship().created}}</p>
+    <p>Edited: {{selectedStarship().edited}}</p>
+    <p>URL: {{selectedStarship().url}}</p> -->
 </div>
