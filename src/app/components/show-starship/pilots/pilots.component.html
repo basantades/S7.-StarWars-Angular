@@ -1,17 +1,28 @@
+
 @if (pilot) {
-    <div class="p-4 text-center">
-        <h3>{{ pilot.name }}</h3>
-        <p>Starships:<br> 
-            @if (pilot.starships && pilot.starships.length > 0) {
+    <div class="mt-12 mx-6 text-center border-img pb-4">
+        <div class="fadedown">
+        <img 
+        [src]="'https://raw.githubusercontent.com/vieraboschkova/swapi-gallery/refs/heads/main/static/assets/img/people/' + (pilot.url.split('/')[5]) + '.jpg'" 
+        [alt]="pilot.name"
+        class="w-full"
+    /></div>
+        <h3 class="text-lg font-bold px-6 pt-4 text-center uppercase">{{ pilot.name }}</h3>
+        <p class="text-gray-400  space-y-2 orbitron-400 mb-1">Piloted Starships</p>
+        @if (pilot.starships && pilot.starships.length > 0) {
+            <div class="flex gap-6 justify-center flex-wrap">
                 @for (starshipUrl of pilot.starships; track starshipUrl) {
                     <a href="/starship/{{ starShipsService.getIdFromUrl(starshipUrl) }}">
-                        Starship {{ starShipsService.getIdFromUrl(starshipUrl) }}
+                        <img 
+                            src="/assets/img/starships/{{ starShipsService.getIdFromUrl(starshipUrl) }}.jpg" 
+                            alt="Starship {{ starShipsService.getIdFromUrl(starshipUrl) }}" 
+                            class="w-24 h-24 rounded-full shadow-md scale-75 hover:scale-100 transition-transform"
+                        />
                     </a>
-                    <br>
                 }
-            } @else {
-                <span>No starships available</span>
-            }
-        </p>
+            </div>
+        } @else {
+            <span>No starships available</span>
+        }
     </div>
 }

@@ -24,13 +24,15 @@
     </div>
     @if (selectedStarship().pilots && selectedStarship().pilots.length > 0) {
         <app-title title="Pilots"></app-title>
+        <div class="flex justify-center flex-wrap">
         @for (pilotUrl of selectedStarship().pilots; track pilotUrl) {
+            <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/4">
             <app-pilots [pilotUrl]="pilotUrl"></app-pilots>
+        </div>
         }
+    </div>
     }
     <!-- <p>Pilots: {{selectedStarship().pilots}}</p>
     <p>Films: {{selectedStarship().films}}</p>
-    <p>Created: {{selectedStarship().created}}</p>
-    <p>Edited: {{selectedStarship().edited}}</p>
     <p>URL: {{selectedStarship().url}}</p> -->
 </div>
