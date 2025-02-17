@@ -1,4 +1,4 @@
-<div>
+@if (selectedStarship()) {<div>
     <app-title title={{selectedStarship().name}}></app-title>
     <div class="flex flex-col gap-4 md:flex-row ficha">
         <div class="w-full md:w-3/5">
@@ -36,3 +36,8 @@
     <p>Films: {{selectedStarship().films}}</p>
     <p>URL: {{selectedStarship().url}}</p> -->
 </div>
+} @else {
+    <div class="alert alert-warning">
+        No data available for this starship.
+    </div>
+}

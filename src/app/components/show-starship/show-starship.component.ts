@@ -21,4 +21,11 @@ export class ShowStarshipComponent {
     this.starshipsService.showStarship(id);
   }
 
+  ngOnInit(): void {
+    // Verifica si los datos se han cargado correctamente
+    if (!this.selectedStarship()) {
+      console.error("No starship data available.");
+    }
+  }
+
 }
