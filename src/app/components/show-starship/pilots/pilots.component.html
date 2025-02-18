@@ -1,5 +1,5 @@
 @if (pilot) {
-    <div class="mt-12 mx-6 text-center border-img pb-4 mb-10">
+    <div class="mt-12 mx-6 text-center border-img pb-4">
         <div class="fadedown">
             <img 
                 [src]="'https://raw.githubusercontent.com/vieraboschkova/swapi-gallery/refs/heads/main/static/assets/img/people/' + (pilot.url.split('/')[5]) + '.jpg'" 
@@ -7,7 +7,7 @@
                 class="w-full"
             />
         </div>
-        <h3 class="text-lg font-bold px-6 pb-4 text-center uppercase">{{ pilot.name }}</h3>
+        <h3 class="text-lg font-bold pb-4 text-center uppercase">{{ pilot.name }}</h3>
         <p class="text-gray-400 space-y-2 orbitron-400 mb-2">Piloted Starships:</p>
         
         @if (pilot.starships && pilot.starships.length > 0) {

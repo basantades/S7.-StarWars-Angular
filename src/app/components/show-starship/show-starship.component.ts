@@ -3,10 +3,11 @@ import { StarshipsService } from '../../services/starships.service';
 import { ActivatedRoute } from '@angular/router';
 import { TitleComponent } from "../title/title.component";
 import { PilotsComponent } from "./pilots/pilots.component";
+import { FilmsComponent } from "./films/films.component";
 
 @Component({
   selector: 'app-show-starship',
-  imports: [TitleComponent, PilotsComponent],
+  imports: [TitleComponent, PilotsComponent, FilmsComponent],
   templateUrl: './show-starship.component.html',
   styleUrl: './show-starship.component.scss'
 })

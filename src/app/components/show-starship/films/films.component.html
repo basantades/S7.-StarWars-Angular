@@ -1,0 +1,15 @@
+@if (film) {
+    <div class="mt-12 mx-6 text-center border-img pb-4">
+        <div>
+            <img 
+                [src]="'/assets/img/films/' + (film.url.split('/')[5]) + '.jpeg'" 
+                [alt]="film.title"
+                class="w-full"
+            />
+        </div>
+        <h3 class="text-lg font-bold mt-6 text-center uppercase">{{ film.title }}</h3>
+        <p class="pb-4">Episode {{ film.episode_id }}</p>
+        <p class="mb-2"><span class="text-gray-400">Director:</span><br> {{ film.director }}</p>
+        <p class="text-gray-400 space-y-2 orbitron-400 mb-2">Release Date: <br> {{ film.release_date }}</p>
+    </div>
+}
