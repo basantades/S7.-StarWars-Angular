@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { catchError, finalize, Observable } from 'rxjs';
+import { catchError, finalize } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class StarshipsService {
 
   httpClient = inject(HttpClient); // Hay que añadir provideHttpClient() en app.config
-  
+
   listStarships = signal<any[]>([]); 
-  
+
   private primaryApiUrl = 'https://swapi.dev/api/starships/';
   private fallbackApiUrl = 'https://swapi.py4e.com/api/starships/';
 
@@ -18,7 +18,7 @@ export class StarshipsService {
   selectedStarship = signal<any | null>(null);
 
   getStarshipsList(): void {
-  console.log("iniciando getStarshipsList():", this.listStarships());
+    console.log("iniciando getStarshipsList():", this.listStarships());
     if (this.listStarships().length > 0) return;
 
     this.httpClient.get<any>(this.primaryApiUrl).pipe(
@@ -28,10 +28,9 @@ export class StarshipsService {
       })
     ).subscribe((data) => {
       console.log("Datos recibidos:", data);
-      this.listStarships.set(this.procesarStarships(data.results)); // Agrega datos mas el ID a cada objeto
+      this.listStarships.set(data.results); // Se eliminó la transformación de ID
       this.nextPageUrl = data.next;
     });
-
   }
 
   isLoading = false;
@@ -48,7 +47,7 @@ export class StarshipsService {
     ).subscribe(
       (data) => {
         console.log("Resultados recibidos siguiente página:", data.results);
-        this.listStarships.update(currentList => [...currentList, ...this.procesarStarships(data.results)]); 
+        this.listStarships.update(currentList => [...currentList, ...data.results]); // Eliminado `procesarStarships`
         this.nextPageUrl = data.next; 
       },
       () => {
@@ -57,22 +56,6 @@ export class StarshipsService {
     );
   }
 
-
-  getIdFromUrl(url: string): string | null {
-    console.log("iniciando getIdFromUrl():", url);
-    const match = url.match(/\/(\d+)\/$/);
-    return match ? match[1] : null;
-  }
-
-  private procesarStarships(data: any[]): any[] {
-    return data.map(starship => ({
-      ...starship, 
-      id: this.getIdFromUrl(starship.url)
-    }));
-  }
-
-
-  
   showStarship(id: number): void {
     console.log("iniciando showStarship():", id);
     this.httpClient.get<any>(`https://swapi.dev/api/starships/${id}`).pipe(
@@ -86,6 +69,4 @@ export class StarshipsService {
     console.log("final showStarship():", this.selectedStarship());
   }
 
-
 }
-

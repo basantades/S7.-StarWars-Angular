@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { MenuUserComponent } from './menu-user.component';
+import { Auth } from '@angular/fire/auth'; // ✅ Importamos Auth
+import { of } from 'rxjs';
 
 describe('MenuUserComponent', () => {
-  let component: MenuUserComponent;
-  let fixture: ComponentFixture<MenuUserComponent>;
+  let mockAuth: jasmine.SpyObj<Auth>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MenuUserComponent]
-    })
-    .compileComponents();
+    mockAuth = jasmine.createSpyObj('Auth', [], {
+      currentUser: of(null) // ✅ Simula que no hay usuario autenticado
+    });
 
-    fixture = TestBed.createComponent(MenuUserComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    await TestBed.configureTestingModule({
+      declarations: [MenuUserComponent],
+      providers: [
+        { provide: Auth, useValue: mockAuth } // ✅ Proporcionamos el mock
+      ]
+    }).compileComponents();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(MenuUserComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });

@@ -9,6 +9,7 @@
         <h3 class="text-lg font-bold mt-6 text-center uppercase">{{ film.title }}</h3>
         <p class="pb-4">Episode {{ film.episode_id }}</p>
         <p class="mb-2"><span class="text-gray-400">Director:</span><br> {{ film.director }}</p>
-        <p class="text-gray-400 space-y-2 orbitron-400 mb-2">Release Date: <br> {{ film.release_date }}</p>
+        <p class="mb-2"><span class="text-gray-400">Release Date:</span> 
+            <br><span class=" space-y-2 orbitron-400">{{ film.release_date }}</span> </p>
     </div>
 }

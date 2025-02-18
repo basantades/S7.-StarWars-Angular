@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideHttpClient } from '@angular/common/http'; // 🆕 Agregar provideHttpClient
 import { PilotsComponent } from './pilots.component';
 
 describe('PilotsComponent', () => {
@@ -8,7 +8,10 @@ describe('PilotsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PilotsComponent]
+      imports: [PilotsComponent],  // Asegúrate de que el componente esté en imports si es standalone
+      providers: [
+        provideHttpClient(),  // 🆕 Agregar provideHttpClient para HttpClient
+      ]
     })
     .compileComponents();
 
