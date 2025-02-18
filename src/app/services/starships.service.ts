@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StarshipsService {
 
-  httpClient = inject(HttpClient); // Hay que añadir provideHttpClient() en app.config
+  httpClient = inject(HttpClient);
 
   listStarships = signal<any[]>([]); 
 
@@ -18,7 +18,6 @@ export class StarshipsService {
   selectedStarship = signal<any | null>(null);
 
   getStarshipsList(): void {
-    console.log("iniciando getStarshipsList():", this.listStarships());
     if (this.listStarships().length > 0) return;
 
     this.httpClient.get<any>(this.primaryApiUrl).pipe(
@@ -27,8 +26,7 @@ export class StarshipsService {
         return this.httpClient.get<any>(this.fallbackApiUrl); // Segunda API si falla la primera
       })
     ).subscribe((data) => {
-      console.log("Datos recibidos:", data);
-      this.listStarships.set(data.results); // Se eliminó la transformación de ID
+      this.listStarships.set(data.results); 
       this.nextPageUrl = data.next;
     });
   }
@@ -40,14 +38,14 @@ export class StarshipsService {
   
     if (!this.nextPageUrl || this.isLoading) return; // Si no hay más páginas o ya está cargando, no hacer nada
   
-    this.isLoading = true; // 🔒 Bloquea nuevas llamadas mientras carga
+    this.isLoading = true; 
   
     this.httpClient.get<any>(this.nextPageUrl).pipe(
-      finalize(() => this.isLoading = false) // 🔓 Se ejecuta SIEMPRE, incluso si hay un error
+      finalize(() => this.isLoading = false) 
     ).subscribe(
       (data) => {
         console.log("Resultados recibidos siguiente página:", data.results);
-        this.listStarships.update(currentList => [...currentList, ...data.results]); // Eliminado `procesarStarships`
+        this.listStarships.update(currentList => [...currentList, ...data.results]);
         this.nextPageUrl = data.next; 
       },
       () => {
