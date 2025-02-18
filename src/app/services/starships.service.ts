@@ -21,37 +21,40 @@ export class StarshipsService {
     if (this.listStarships().length > 0) return;
 
     this.httpClient.get<any>(this.primaryApiUrl).pipe(
-      catchError(() => {
-        console.warn('⚠️ Error con la API principal, intentando con la API de respaldo...');
-        return this.httpClient.get<any>(this.fallbackApiUrl); // Segunda API si falla la primera
+      catchError(error => {
+        console.warn('⚠️ Error con la API principal, intentando con la API de respaldo...', error);
+        return this.httpClient.get<any>(this.fallbackApiUrl);
       })
-    ).subscribe((data) => {
-      this.listStarships.set(data.results); 
-      this.nextPageUrl = data.next;
+    ).subscribe({
+      next: (data) => {
+        this.listStarships.set(data.results);
+        this.nextPageUrl = data.next;
+      },
+      error: (error) => {
+        console.error('❌ Ambas APIs fallaron al obtener starships:', error);
+      }
     });
   }
 
-  isLoading = false;
+  isLoading = signal(false);
 
+  
   getNextPageStarshipsList(): void {
-    console.log("iniciando getNextPageStarshipsList():", this.nextPageUrl);
+    if (!this.nextPageUrl || this.isLoading()) return;
   
-    if (!this.nextPageUrl || this.isLoading) return; // Si no hay más páginas o ya está cargando, no hacer nada
-  
-    this.isLoading = true; 
+    this.isLoading.set(true);
   
     this.httpClient.get<any>(this.nextPageUrl).pipe(
-      finalize(() => this.isLoading = false) 
-    ).subscribe(
-      (data) => {
-        console.log("Resultados recibidos siguiente página:", data.results);
+      finalize(() => this.isLoading.set(false))
+    ).subscribe({
+      next: (data) => {
         this.listStarships.update(currentList => [...currentList, ...data.results]);
-        this.nextPageUrl = data.next; 
+        this.nextPageUrl = data.next;
       },
-      () => {
+      error: () => {
         console.error('⚠️ Error al obtener la siguiente página.');
       }
-    );
+    });
   }
 
   showStarship(id: number): void {
