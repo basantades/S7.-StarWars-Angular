@@ -13,17 +13,17 @@ export class ListStarshipsComponent {
   starshipsService = inject(StarshipsService);
   listStarships = this.starshipsService.listStarships; 
 
-  constructor() {
-    this.starshipsService.getStarshipsList(); 
+  ngOnInit() {
+    this.starshipsService.getStarshipsList();
   }
+  
 
-    // Detecta el scroll de la ventana
-    @HostListener("window:scroll", [])
-    onScroll(): void {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
-        // Si el usuario está a 200px del final, carga más datos
-        this.starshipsService.getNextPageStarshipsList();
-      }
+  @HostListener("window:scroll")
+  onScroll(): void {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 200) {
+      this.starshipsService.getNextPageStarshipsList();
     }
+  }
     
 }

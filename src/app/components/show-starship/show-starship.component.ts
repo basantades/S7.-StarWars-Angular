@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { StarshipsService } from '../../services/starships.service';
 import { ActivatedRoute } from '@angular/router';
 import { TitleComponent } from "../title/title.component";
@@ -16,17 +16,18 @@ export class ShowStarshipComponent {
   selectedStarship = this.starshipsService.selectedStarship;
   route = inject(ActivatedRoute);
 
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.starshipsService.showStarship(Number(id));
+      }
+    });
 
-  constructor() {
-    const id = this.route.snapshot.params['id'];
-    this.starshipsService.showStarship(id);
+    effect(() => {
+      if (!this.selectedStarship()) {
+        console.warn("⚠️ No hay datos disponibles para esta nave.");
+      }
+    });
   }
-
-  ngOnInit(): void {
-    // Verifica si los datos se han cargado correctamente
-    if (!this.selectedStarship()) {
-      console.error("No starship data available.");
-    }
-  }
-
 }
