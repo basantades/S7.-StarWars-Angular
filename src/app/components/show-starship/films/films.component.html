@@ -1,10 +1,9 @@
 @if (film) {
-    <div class="mt-12 mx-6 text-center border-img pb-4">
+    <div class="mt-12 mx-6 text-center ficha-films pb-4">
         <div>
             <img 
                 [src]="'/assets/img/films/' + (film.url.split('/')[5]) + '.jpeg'" 
                 [alt]="film.title"
-                class="w-full"
             />
         </div>
         <h3 class="text-lg font-bold mt-6 text-center uppercase">{{ film.title }}</h3>

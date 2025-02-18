@@ -1,14 +1,13 @@
-.border-img {
-    background-color: #000;
-    border-radius: 0 0 30px 0;
-    border: 2px solid transparent; /* Borde transparente por defecto */
-    border-image-source: linear-gradient(
-        to bottom left, 
-        rgba(0, 255, 255, 0.4) 4%, /* Visible en la esquina superior derecha */
-        transparent 35%, 
-        transparent 65%, 
-        rgba(0, 255, 255, 0.4) 96% /* Visible en la esquina inferior izquierda */
-    );
-    border-image-slice: 1;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+
+
+.ficha-films {
+    border-radius: 0 0 40px 0;
+    background: linear-gradient(180deg, transparent 25%, #142332d0 60%, #14233275 100%);
+}
+
+.ficha-films img {
+    border: 2px solid #142332d0;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
 }
