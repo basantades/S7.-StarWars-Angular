@@ -26,7 +26,7 @@
         <app-title title="Pilots"></app-title>
         <div class="flex justify-center flex-wrap mb-10">
         @for (pilotUrl of selectedStarship().pilots; track pilotUrl) {
-            <div class="w-1/2 md:w-1/3 xl:w-1/4">
+            <div class="sm:w-1/2 md:w-1/3 xl:w-1/4 max-w-2xs">
             <app-pilots [pilotUrl]="pilotUrl"></app-pilots>
         </div>
         }
