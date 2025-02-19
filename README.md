@@ -1,4 +1,4 @@
-# S7.- Star Wars (Angular)
+# Starships of Star Wars (Angular)
 
 <p align="center">
   <img src="public/assets/img/screenshot.jpg" alt="Captura de pantalla del proyecto" />
@@ -6,15 +6,18 @@
 
 ## 📄 Descripción
 
-Este repositorio contiene una aplicación de **exploración del universo de Star Wars** desarrollada con **Angular**. Permite a los usuarios visualizar información sobre personajes, naves y películas de la saga mediante el consumo de una API externa.
+Este repositorio contiene una aplicación **Starships of Star Wars** desarrollada con **Angular**. Permite a los usuarios visualizar información sobre naves, sus pilotos y películas de la saga en las que aparecen mediante el consumo de una API externa.
 
 ## ✨ Características
 
-- **Exploración de Datos**: Consulta información detallada sobre personajes, naves y películas de Star Wars.
+- **Exploración de Datos**: Consulta información detallada sobre naves, pilotos y películas de Star Wars.
 - **Autenticación con Firebase**: Registro e inicio de sesión de usuarios utilizando Firebase Authentication.
 - **Interfaz Moderna con Tailwind CSS y Animaciones Personalizadas**: Diseño responsivo con Tailwind CSS y estilos personalizados con animaciones CSS.
 - **Diseño Responsive**: Adaptado para su uso en dispositivos móviles y de escritorio.
-- **Despliegue en Vercel**: Aplicación alojada en [Vercel](https://starships-star-wars.vercel.app/).
+- **Despliegue en Vercel**: Aplicación alojada en [Vercel](https://starships-star-wars.vercel.app/). ¡Puedes probarla directamente desde tu navegador!
+  - Si no deseas crear un usuario, puedes utilizar las siguientes credenciales de prueba:
+    - **Email**: `test@email.com`
+    - **Contraseña**: `123456`
 
 ## 💻 Tecnologías Utilizadas
 
@@ -60,7 +63,23 @@ Esto instalará todas las dependencias necesarias, incluyendo Angular CLI.
 
 ## ▶️ Ejecución
 
-Para iniciar la aplicación en un entorno de desarrollo, ejecuta:
+Antes de iniciar la aplicación, debes crear un archivo `environment.ts` en la carpeta `environments/` que debes completar los valores con las credenciales de tu proyecto en Firebase:
+
+```typescript
+export const environment = {
+    production: false,
+    firebaseConfig: {
+        apiKey: "",
+        authDomain: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: ""
+    }
+};
+```
+
+Luego, para iniciar la aplicación en un entorno de desarrollo, ejecuta:
 ```bash
 ng serve
 ```
@@ -77,4 +96,3 @@ Si deseas colaborar en este proyecto o reportar algún problema, sigue estos pas
 ---
 
 Este README proporciona una guía básica para configurar, utilizar y contribuir al proyecto **S7.- StarWars (Angular)**. Asegúrate de consultar la documentación oficial de Angular, Firebase y Tailwind para obtener información más detallada y actualizaciones.
-
