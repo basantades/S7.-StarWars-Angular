@@ -2,7 +2,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8 pb-4">
     @for (starship of listStarships(); track starship) {
         <div class="border-img overflow-hidden text-center">
-            <a href="/starship/{{ starship.url.split('/')[5] }}/">
+            <a [routerLink]="['/starship', starship.url.split('/')[5]]">
                 <div class="fadedown">
                     <img [src]="'/assets/img/starships/' + (starship.url.split('/')[5]) + '.jpg'" 
                          [alt]="starship.name" 

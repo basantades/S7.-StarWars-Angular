@@ -13,7 +13,7 @@
         @if (pilot.starships && pilot.starships.length > 0) {
             <div class="flex gap-2 justify-center flex-wrap">
                 @for (starshipUrl of pilot.starships; track starshipUrl) {
-                    <a href="/starship/{{ starshipUrl.split('/')[5] }}">
+                    <a [routerLink]="['/starship', starshipUrl.split('/')[5]]">
                         <img 
                             src="/assets/img/starships/{{ starshipUrl.split('/')[5] }}.jpg" 
                             alt="Starship {{ starshipUrl.split('/')[5] }}" 

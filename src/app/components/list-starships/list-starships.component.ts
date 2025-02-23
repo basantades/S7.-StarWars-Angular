@@ -1,12 +1,13 @@
 import { Component, inject, HostListener } from '@angular/core';
 import { StarshipsService } from '../../services/starships.service';
 import { TitleComponent } from "../title/title.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list-starships',
   templateUrl: './list-starships.component.html',
   styleUrl: './list-starships.component.scss',
-  imports: [TitleComponent]
+  imports: [TitleComponent, RouterLink]
 })
 export class ListStarshipsComponent {
 

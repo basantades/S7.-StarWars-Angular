@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { StarshipsService } from '../../../services/starships.service';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-pilots',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './pilots.component.html',
   styleUrl: './pilots.component.scss'
 })

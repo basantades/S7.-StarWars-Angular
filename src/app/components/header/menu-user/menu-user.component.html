@@ -3,7 +3,7 @@
         <span class="text-gray-400">Welcome, {{ user()?.displayName || user()?.email }}</span>
         <a class="text-nowrap text-white hover:text-yellow cursor-pointer" (click)="logout()">LOG OUT</a>
       } @else {
-        <a href="/login" class="text-white hover:text-yellow">LOG IN</a>
-        <a href="/register" class="text-white hover:text-yellow">REGISTER</a>
+        <a [routerLink]="['/login']" class="text-white hover:text-yellow">LOG IN</a>
+        <a [routerLink]="['/register']" class="text-white hover:text-yellow">REGISTER</a>
     }
 </div>
