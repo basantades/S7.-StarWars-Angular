@@ -85,6 +85,20 @@ ng serve
 ```
 Luego, abre tu navegador y navega a `http://localhost:4200/` para ver la aplicación en acción.
 
+## 🧪 Pruebas
+
+Se han creado pruebas unitarias para los siguientes componentes de la aplicación:
+
+- **AppComponent**: Realiza las pruebas del componente principal de la aplicación.
+- **ListStarshipsComponent**: Asegura que los datos de las naves se muestren correctamente.
+- **PilotsComponent**: Verifica que los datos de los pilotos se carguen y muestren correctamente, y también que se manejen los errores en caso de problemas con la carga de datos.
+
+Puedes ejecutar las pruebas con el siguiente comando:
+
+```bash
+ng test
+```
+
 ## 🤝 Contribuciones
 
 Si deseas colaborar en este proyecto o reportar algún problema, sigue estos pasos:
