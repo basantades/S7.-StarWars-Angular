@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
   registerForm: FormGroup;
   errorMessage: string = '';
+  showLoginLink: boolean = false;
 
   constructor(private auth: Auth, private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
@@ -36,8 +37,15 @@ export class RegisterComponent {
       await createUserWithEmailAndPassword(this.auth, email, password);
       console.log('User registered');
       this.router.navigate(['/dashboard']);
-    } catch (error) {
-      this.errorMessage = 'Error registering user.';
+    } catch (error: any) {
+    // Manejo de errores específicos de Firebase
+    if (error.code === 'auth/email-already-in-use') {
+      this.errorMessage = 'This email is already registered.';
+      this.showLoginLink = true;
+    } else {
+      this.errorMessage = 'Error registering user. Please try again.';
+      this.showLoginLink = false;
     }
+  }
   }
 }
