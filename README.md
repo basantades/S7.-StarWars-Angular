@@ -49,12 +49,18 @@ Asegúrate de tener **Node.js** instalado en tu sistema. Puedes descargarlo desd
 git clone https://github.com/basantades/S7.-StarWars-Angular.git
 ```
 
-**2️⃣ Ingresa al directorio del proyecto:**
+**2️⃣ Desvincula el repositorio del control remoto original (opcional):**
+```bash
+git remote remove origin
+```
+Este paso es útil si planeas trabajar en tu propia versión del proyecto y no deseas mantener la conexión con el repositorio original.
+
+**3️⃣ Ingresa al directorio del proyecto:**
 ```bash
 cd S7.-StarWars-Angular
 ```
 
-**3️⃣ Instala las dependencias necesarias:**
+**4️⃣ Instala las dependencias necesarias:**
 ```bash
 npm install
 ```
@@ -63,7 +69,9 @@ Esto instalará todas las dependencias necesarias, incluyendo Angular CLI.
 
 ## ▶️ Ejecución
 
-Antes de iniciar la aplicación, debes crear un archivo `environment.ts` en la carpeta `environments/` que debes completar los valores con las credenciales de tu proyecto en Firebase:
+Antes de iniciar la aplicación, debes configurar las credenciales de Firebase. En la carpeta environments/ encontrarás un archivo environment.example.ts. Sigue estos pasos:
+
+1. Abre el archivo environment.example.ts, que tiene la siguiente estructura:
 
 ```typescript
 export const environment = {
@@ -78,8 +86,11 @@ export const environment = {
     }
 };
 ```
+2. Completa los valores de firebaseConfig con las credenciales de tu proyecto en Firebase.
+3. Renombra el archivo de environment.example.ts a environment.ts.
 
-Luego, para iniciar la aplicación en un entorno de desarrollo, ejecuta:
+
+Para iniciar la aplicación en un entorno de desarrollo, ejecuta:
 ```bash
 ng serve
 ```
