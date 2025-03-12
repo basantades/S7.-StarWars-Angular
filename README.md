@@ -69,7 +69,7 @@ Esto instalará todas las dependencias necesarias, incluyendo Angular CLI.
 
 ## ▶️ Ejecución
 
-Antes de iniciar la aplicación, debes configurar las credenciales de Firebase. En la carpeta environments/ encontrarás un archivo environment.example.ts. Sigue estos pasos:
+Antes de iniciar la aplicación, debes configurar las credenciales de Firebase ([guía aquí](https://firebase.google.com/docs/web/setup)). En la carpeta `environments/` encontrarás un archivo `environment.example.ts`. Sigue estos pasos:
 
 1. Abre el archivo environment.example.ts, que tiene la siguiente estructura:
 
