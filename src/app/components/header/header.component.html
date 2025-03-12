@@ -17,39 +17,65 @@
 
   <div class="lg:hidden bg-black py-4 shadow-md border-b-2 border-gray-800 ">
     <div class=" flex items-center fadedown">
-    <div class="w-1/4 ml-12">
+    <div class="w-1/4 ml-12 ">
+      @if (!isHome()) {
       <button
-        (click)="toggleMenu()"
-        
+        (click)="goBack()"
         type="button"
         class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-hamburger"
-        [attr.aria-expanded]="isMenuOpen"
       >
-        <span class="sr-only">Open main menu</span>
+        <span class="sr-only">Go back</span>
         <svg
-          class="w-5 h-5"
+          class="w-8 h-8"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          viewBox="0 0 17 14"
+          viewBox="0 0 24 24"
         >
           <path
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15"
+            d="M19 12H5m7-7-7 7 7 7"
           />
         </svg>
       </button>
+    }
+     
     </div>
     <div class="mx-auto flex justify-center">
       <a [routerLink]="['/']">
         <img src="/assets/img/sw_logo.png" alt="Star Wars Logo" class="h-16" />
       </a>
     </div>
-    <div class="w-1/4 mr-12"></div>
+    <div class="w-1/4 mr-12 flex justify-end">
+      <button
+      (click)="toggleMenu()"
+      
+      type="button"
+      class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      aria-controls="navbar-hamburger"
+      [attr.aria-expanded]="isMenuOpen"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-8 h-8"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      </svg>
+    </button>
+    </div>
   </div>
   <div  class="burguer-menu" [class.hiddenmenu]="!isMenuOpen">
     <div class="flex flex-col w-full mt-8 mb-4">
