@@ -48,17 +48,17 @@ Asegúrate de tener **Node.js** instalado en tu sistema. Puedes descargarlo desd
 ```bash
 git clone https://github.com/basantades/S7.-StarWars-Angular.git
 ```
+**2️⃣ Ingresa al directorio del proyecto:**
+```bash
+cd S7.-StarWars-Angular
+```
 
-**2️⃣ Desvincula el repositorio del control remoto original (opcional):**
+**3️⃣ Desvincula el repositorio del control remoto original (opcional):**
 ```bash
 git remote remove origin
 ```
 Este paso es útil si planeas trabajar en tu propia versión del proyecto y no deseas mantener la conexión con el repositorio original.
 
-**3️⃣ Ingresa al directorio del proyecto:**
-```bash
-cd S7.-StarWars-Angular
-```
 
 **4️⃣ Instala las dependencias necesarias:**
 ```bash
