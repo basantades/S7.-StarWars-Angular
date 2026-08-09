@@ -11,8 +11,8 @@ export class StarshipsService {
 
   listStarships = signal<any[]>([]); 
 
-  private primaryApiUrl = 'https://swapi.dev/api/starships/';
-  private fallbackApiUrl = 'https://swapi.py4e.com/api/starships/';
+  private primaryApiUrl = 'https://swapi.py4e.com/api/starships/';
+  private fallbackApiUrl = 'https://swapi.dev/api/starships/';
 
   nextPageUrl: string | null = '';
   selectedStarship = signal<any | null>(null);
